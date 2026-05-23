@@ -394,7 +394,7 @@ const ALBUM_DATA = [
     badge:  "Album I",
     title:  "Kebersamaan Angkatan",
     count:  "50 Foto",
-    music:  "assets/music/Kereta Kencan.mp3",   // GANTI: musik album 1
+    music:  "assets/music/Semangat Ekonomi Pembangunan 25.mp3",   // GANTI: musik album 1
     photos: (function() {
       // 50 foto — sesuaikan src dengan file foto asli kamu
       // type: "portrait" | "landscape" | "square"
@@ -522,7 +522,7 @@ const ALBUM_DATA = [
     badge:  "Album III",
     title:  "Prestasi",
     count:  "50 Foto",
-    music:  "assets/music/Semangat Ekonomi Pembangunan 25.mp3",   // GANTI: musik album 3
+    music:  "assets/music/Kereta Kencan.mp3",   // GANTI: musik album 3
     photos: (function() {
       const raw = [
         { src: "assets/images/ak1.jpeg",  caption: "Foto PDH FEB — Bangga",        type: "portrait"  },
