@@ -522,7 +522,7 @@ const ALBUM_DATA = [
     badge:  "Album III",
     title:  "Prestasi",
     count:  "50 Foto",
-    music:  "assets/music/The Winner.mp3",   // GANTI: musik album 3
+    music:  "assets/music/TheWinner.mp3",   // GANTI: musik album 3
     photos: (function() {
       const raw = [
         { src: "assets/images/ak1.jpeg",  caption: "Foto PDH FEB — Bangga",        type: "portrait"  },
