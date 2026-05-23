@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Profil Resmi Angkatan 25 - Ekonomi Pembangunan, Fakultas Ekonomi dan Bisnis, Universitas Islam Bandung" />
+  <title>Angkatan 25 — Ekonomi Pembangunan UNISBA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════ PARTICLE CANVAS ═══════ -->
+  <canvas id="particleCanvas" aria-hidden="true"></canvas>
+
+  <!-- ═══════ INTRO OVERLAY ═══════ -->
+  <div class="intro-overlay" id="introOverlay" aria-hidden="true">
+    <div class="intro-inner">
+      <div class="intro-badge">Profil Resmi</div>
+      <div class="intro-name">
+        <span class="intro-word" id="introWord1">ANGKATAN</span>
+        <span class="intro-num" id="introWord2">25</span>
+      </div>
+      <div class="intro-line"></div>
+      <div class="intro-sub">Ekonomi Pembangunan &nbsp;·&nbsp; FEB UNISBA</div>
+    </div>
+    <div class="intro-corner intro-corner--tl"></div>
+    <div class="intro-corner intro-corner--tr"></div>
+    <div class="intro-corner intro-corner--bl"></div>
+    <div class="intro-corner intro-corner--br"></div>
+  </div>
+
+  <!-- ═══════ LOADER ═══════ -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <div class="loader-line"></div>
+      <div class="loader-text">ANGKATAN <span>25</span></div>
+      <div class="loader-sub">Ekonomi Pembangunan · UNISBA</div>
+      <div class="loader-progress"><div class="loader-bar" id="loaderBar"></div></div>
+      <div class="loader-percent" id="loaderPercent">0%</div>
+    </div>
+  </div>
+
+  <!-- ═══════ FLOATING ELEMENTS ═══════ -->
+  <div class="floating-elements" aria-hidden="true">
+    <span class="float-el fe-1">✦</span>
+    <span class="float-el fe-2">◆</span>
+    <span class="float-el fe-3">✦</span>
+    <span class="float-el fe-4">◇</span>
+    <span class="float-el fe-5">✦</span>
+    <span class="float-el fe-6">◆</span>
+  </div>
+
+  <!-- ═══════ NAVBAR ═══════ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-brand">
+      <span class="brand-roman">EP</span>
+      <span class="brand-divider">·</span>
+      <span class="brand-year">25</span>
+    </div>
+    <ul class="nav-links" role="list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#gallery-albums" class="nav-gallery-link">Gallery</a></li>
+      <li><a href="#members">Members</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-menu" id="navMenu" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <ul role="list">
+      <li><a href="#about" class="mobile-link">About</a></li>
+      <li><a href="#gallery-albums" class="mobile-link">Gallery</a></li>
+      <li><a href="#members" class="mobile-link">Members</a></li>
+      <li><a href="#contact" class="mobile-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ═══════ GLOBAL MUSIC PLAYER (Home) ═══════ -->
+  <div class="music-player" id="musicPlayer" role="region" aria-label="Music player">
+    <button class="music-btn" id="musicBtn" aria-label="Toggle background music">
+      <svg id="iconPlay" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M10 8l6 4-6 4V8z" fill="currentColor"/>
+      </svg>
+      <svg id="iconMute" viewBox="0 0 24 24" fill="none" style="display:none" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+        <rect x="9" y="8" width="2" height="8" fill="currentColor"/>
+        <rect x="13" y="8" width="2" height="8" fill="currentColor"/>
+      </svg>
+    </button>
+    <div class="music-wave" id="musicWave" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <!-- GANTI src sesuai nama file musik kamu di assets/music/ -->
+    <audio id="bgMusic" loop preload="none">
+      <source src="assets/music/Kereta Kencan.mp3" type="audio/mpeg" />
+    </audio>
+  </div>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="metadata"
+        poster="assets/images/ak3.jpeg" aria-hidden="true">
+        <source src="assets/videos/hero.mp4" type="video/mp4" />
+        <img src="assets/images/ak3.jpeg" alt="Hero background" class="hero-img-fallback" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="particle p1" aria-hidden="true"></div>
+      <div class="particle p2" aria-hidden="true"></div>
+      <div class="particle p3" aria-hidden="true"></div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-label reveal-up" style="animation-delay:.3s">Profil Resmi</p>
+      <h1 class="hero-title reveal-up" style="animation-delay:.55s">
+        ANGKATAN<br/><em>25</em>
+      </h1>
+      <div class="hero-divider reveal-up" style="animation-delay:.8s"></div>
+      <p class="hero-sub reveal-up" style="animation-delay:.95s">
+        Ekonomi Pembangunan &nbsp;·&nbsp; FEB UNISBA
+      </p>
+      <p class="hero-tagline reveal-up" style="animation-delay:1.15s">
+        "Membangun Generasi Ekonom yang Berintegritas, Berdaya Saing, dan Berakhlak Mulia."
+      </p>
+      <a href="#about" class="hero-cta reveal-up" style="animation-delay:1.4s">
+        <span>Discover</span>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a>
+    </div>
+
+    <div class="hero-scroll-indicator" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span>SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ═══════ ABOUT ═══════ -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">— Tentang Kami —</span>
+        <h2 class="section-title">Angkatan <em>Dua Puluh Lima</em></h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-image fade-in">
+          <div class="about-img-wrap">
+            <img src="assets/images/ak5.jpeg" alt="Angkatan 25 UNISBA bersama" loading="lazy" />
+            <div class="about-img-border"></div>
+          </div>
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-num" data-target="25">0</span>
+              <span class="stat-label">Mahasiswa</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num" data-target="2025">0</span>
+              <span class="stat-label">Tahun Masuk</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num" data-target="1">0</span>
+              <span class="stat-label">Visi Bersama</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-text fade-in">
+          <p class="about-opening">
+            Kami adalah <strong>Angkatan 25</strong>, generasi mahasiswa Program Studi Ekonomi Pembangunan
+            Universitas Islam Bandung yang menapaki jalan akademik dengan penuh semangat dan keyakinan.
+          </p>
+          <p>
+            Berdiri di atas fondasi nilai-nilai Islam yang kokoh, kami hadir sebagai insan akademik yang tidak
+            hanya berorientasi pada capaian intelektual semata, melainkan juga pada pembentukan karakter yang
+            luhur, bertanggung jawab, dan berdedikasi terhadap kemajuan bangsa.
+          </p>
+          <p>
+            Fakultas Ekonomi dan Bisnis UNISBA telah menjadi wadah kami dalam mendalami ilmu ekonomi
+            pembangunan—sebuah disiplin yang menuntut ketajaman analisis, kepekaan sosial, dan visi jangka panjang.
+          </p>
+          <div class="about-quote">
+            <blockquote>
+              "Ilmu tanpa amal adalah pohon tanpa buah, EP EP?YESSSS"
+            </blockquote>
+            <cite>— Nilai Dasar Angkatan 25 dan JARGON EP</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       GALLERY ALBUMS — Multi Album Section
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="gallery-albums-section section" id="gallery-albums">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">— Galeri —</span>
+        <h2 class="section-title">Momen <em>Berharga</em></h2>
+        <p class="section-desc">Kumpulan kenangan terbaik Angkatan 25 dalam tiga album eksklusif.</p>
+      </div>
+
+      <!-- Album Cards Grid -->
+      <div class="album-cards-grid fade-in">
+
+        <!-- Album 1: Kebersamaan Angkatan -->
+        <div class="album-card" data-album="0">
+          <div class="album-card-img">
+            <img src="assets/images/ak4.jpeg" alt="Album Kebersamaan Angkatan" loading="lazy" />
+            <div class="album-card-overlay">
+              <span class="album-card-icon">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.5"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="1.5"/></svg>
+              </span>
+            </div>
+          </div>
+          <div class="album-card-info">
+            <span class="album-badge">Album I</span>
+            <h3 class="album-title">Kebersamaan Angkatan</h3>
+            <p class="album-desc">Momen kebersamaan, kekeluargaan, dan persahabatan selama perjalanan akademik bersama.</p>
+            <div class="album-meta">
+              <span>50 Foto</span>
+              <span>·</span>
+              <span>Angkatan 25</span>
+            </div>
+            <button class="album-open-btn" data-album="0" aria-label="Buka Album Kebersamaan Angkatan">
+              Buka Album
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Album 2: Anomali Angkatan 25 -->
+        <div class="album-card" data-album="1">
+          <div class="album-card-img">
+            <img src="assets/images/ak7.jpeg" alt="Album Anomali Angkatan 25" loading="lazy" />
+            <div class="album-card-overlay">
+              <span class="album-card-icon">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="1.5"/></svg>
+              </span>
+            </div>
+          </div>
+          <div class="album-card-info">
+            <span class="album-badge">Album II</span>
+            <h3 class="album-title">Anomali Angkatan 25</h3>
+            <p class="album-desc">Ekonomi Pembangunan · Wajah-wajah unik, karakter khas, dan cerita di balik layar angkatan.</p>
+            <div class="album-meta">
+              <span>50 Foto</span>
+              <span>·</span>
+              <span>EP '25</span>
+            </div>
+            <button class="album-open-btn" data-album="1" aria-label="Buka Album Anomali">
+              Buka Album
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Album 3: Prestasi -->
+        <div class="album-card" data-album="2">
+          <div class="album-card-img">
+            <img src="assets/images/ak1.jpeg" alt="Album Prestasi" loading="lazy" />
+            <div class="album-card-overlay">
+              <span class="album-card-icon">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5"/></svg>
+              </span>
+            </div>
+          </div>
+          <div class="album-card-info">
+            <span class="album-badge">Album III</span>
+            <h3 class="album-title">Prestasi</h3>
+            <p class="album-desc">Dokumentasi panitia acara, lomba, dan pengalaman kompetisi yang membanggakan Angkatan 25.</p>
+            <div class="album-meta">
+              <span>50 Foto</span>
+              <span>·</span>
+              <span>Lomba & Event</span>
+            </div>
+            <button class="album-open-btn" data-album="2" aria-label="Buka Album Prestasi">
+              Buka Album
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div><!-- /album-cards-grid -->
+    </div>
+  </section>
+
+  <!-- ═══════ ALBUM VIEWER OVERLAY ═══════ -->
+  <div class="album-viewer" id="albumViewer" role="dialog" aria-modal="true" aria-label="Album Gallery" hidden>
+    <div class="album-viewer-header">
+      <div class="album-viewer-info">
+        <span class="album-viewer-badge" id="albumViewerBadge">Album I</span>
+        <h2 class="album-viewer-title" id="albumViewerTitle">Kebersamaan Angkatan</h2>
+        <p class="album-viewer-count" id="albumViewerCount">50 Foto</p>
+      </div>
+      <div class="album-viewer-controls">
+        <!-- Per-album music control -->
+        <button class="album-music-btn" id="albumMusicBtn" aria-label="Toggle album music">
+          <svg id="albumIconPlay" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M10 8l6 4-6 4V8z" fill="currentColor"/>
+          </svg>
+          <svg id="albumIconMute" viewBox="0 0 24 24" fill="none" style="display:none" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="9" y="8" width="2" height="8" fill="currentColor"/>
+            <rect x="13" y="8" width="2" height="8" fill="currentColor"/>
+          </svg>
+          <span class="album-music-label" id="albumMusicLabel">Musik</span>
+        </button>
+        <button class="album-close-btn" id="albumCloseBtn" aria-label="Tutup album">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Audio element for album music — di luar header, langsung di dalam album-viewer -->
+    <audio id="albumMusic" loop preload="none"></audio>
+
+    <!-- Masonry Grid -->
+    <div class="album-viewer-body" id="albumViewerBody">
+      <div class="album-masonry" id="albumMasonry">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ LIGHTBOX ═══════ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto Preview" hidden>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Tutup preview">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="Foto sebelumnya">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+    <button class="lightbox-next" id="lightboxNext" aria-label="Foto berikutnya">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+    <div class="lightbox-content">
+      <img class="lightbox-img" id="lightboxImg" src="" alt="" />
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+      <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+    <div class="lightbox-bg" id="lightboxBg"></div>
+  </div>
+
+  <!-- ═══════ MEMBERS ═══════ -->
+  <section class="members section" id="members">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">— Pengurus dan Anomali EP'25 —</span>
+        <h2 class="section-title">Wajah <em>Angkatan 25</em></h2>
+      </div>
+
+      <div class="members-filter fade-in" role="group" aria-label="Filter Anggota">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+        <button class="filter-btn" data-filter="pengurus">Pengurus</button>
+        <button class="filter-btn" data-filter="Anomali">Anomali</button>
+      </div>
+
+      <div class="members-grid fade-in" id="membersGrid">
+        <!-- Card 1 — Ketua Angkatan -->
+        <div class="member-card" data-role="pengurus">
+          <div class="card-img">
+            <img src="assets/images/ak9.png" alt="Bung Zizan — Ketua Angkatan" loading="lazy" />
+            <div class="card-overlay">
+              <a href="https://instagram.com/bung_zizan" target="_blank" rel="noopener noreferrer" class="card-ig" aria-label="Instagram Bung Zizan">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="card-info">
+            <span class="card-role">Ketua Angkatan</span>
+            <h3 class="card-name">Bung Zizan</h3>
+            <p class="card-nim">EP · 10090225009</p>
+          </div>
+        </div>
+
+        <!-- Card 2 — Ketua Kelas -->
+        <div class="member-card" data-role="pengurus">
+          <div class="card-img">
+            <img src="assets/images/ak10.jpeg" alt="Kamil Ganteng — Ketua Kelas" loading="lazy" />
+            <div class="card-overlay">
+              <a href="https://instagram.com/fkamilarkara" target="_blank" rel="noopener noreferrer" class="card-ig" aria-label="Instagram Fauzan Kamil">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="card-info">
+            <span class="card-role">Ketua Kelas</span>
+            <h3 class="card-name">Kamil Ganteng</h3>
+            <p class="card-nim">EP · 10090225020</p>
+          </div>
+        </div>
+
+        <!-- Card 3 — Bendahara -->
+        <div class="member-card" data-role="pengurus">
+          <div class="card-img">
+            <img src="assets/images/ak14.jpeg" alt="Rizal — Bendahara" loading="lazy" />
+            <div class="card-overlay">
+              <a href="https://instagram.com/radennrizal" target="_blank" rel="noopener noreferrer" class="card-ig" aria-label="Instagram Rizal">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="card-info">
+            <span class="card-role">Bendahara</span>
+            <h3 class="card-name">Rizal</h3>
+            <p class="card-nim">EP · 10090225021</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="member-card" data-role="Anomali">
+          <div class="card-img">
+            <img src="assets/images/ak15.jpeg" alt="Faris Sering Tidur" loading="lazy" />
+            <div class="card-overlay">
+              <a href="https://instagram.com/faris_rhmn26" target="_blank" rel="noopener noreferrer" class="card-ig" aria-label="Instagram Faris">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="card-info">
+            <span class="card-role">Anomali</span>
+            <h3 class="card-name">Faris Sering Tidur</h3>
+            <p class="card-nim">EP · 100902250</p>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="member-card" data-role="Anomali">
+          <div class="card-img">
+            <img src="assets/images/ak16.jpeg" alt="Iyan Jumpsut" loading="lazy" />
+            <div class="card-overlay">
+              <a href="https://instagram.com/edwadrdd" target="_blank" rel="noopener noreferrer" class="card-ig" aria-label="Instagram Iyan">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="card-info">
+            <span class="card-role">Anomali</span>
+            <h3 class="card-name">Iyan Jumpsut</h3>
+            <p class="card-nim">EP · 10090225001</p>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="member-card" data-role="Anomali">
+          <div class="card-img">
+            <img src="assets/images/ak17.jpeg" alt="Rangga Banten Komedy" loading="lazy" />
+            <div class="card-overlay">
+              <a href="https://instagram.com/rangga.h" target="_blank" rel="noopener noreferrer" class="card-ig" aria-label="Instagram Rangga">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="card-info">
+            <span class="card-role">Anomali</span>
+            <h3 class="card-name">Rangga Banten Komedy</h3>
+            <p class="card-nim">EP · 10090225008</p>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="member-card" data-role="Anomali">
+          <div class="card-img">
+            <img src="assets/images/ak20.jpeg" alt="Hamzah Mulyadi Plenger Finall Boss" loading="lazy" />
+            <div class="card-overlay">
+              <a href="https://instagram.com/hamzah_ziya" target="_blank" rel="noopener noreferrer" class="card-ig" aria-label="Instagram Hamzah">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="card-info">
+            <span class="card-role">Anomali</span>
+            <h3 class="card-name">Hamzah Mulyadi Plenger Finall Boss</h3>
+            <p class="card-nim">EP · 100902250</p>
+          </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="member-card" data-role="Anomali">
+          <div class="card-img">
+            <img src="assets/images/ak19.jpeg" alt="Reza Kircon Humoris" loading="lazy" />
+            <div class="card-overlay">
+              <a href="https://instagram.com/r.zaeza" target="_blank" rel="noopener noreferrer" class="card-ig" aria-label="Instagram Reza">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="card-info">
+            <span class="card-role">Anomali</span>
+            <h3 class="card-name">Reza Kircon Humoris</h3>
+            <p class="card-nim">EP · 10090225022</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CONTACT ═══════ -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">— Hubungi Kami —</span>
+        <h2 class="section-title">Tetap <em>Terhubung</em></h2>
+      </div>
+
+      <div class="contact-grid fade-in">
+        <a href="https://instagram.com/ep.dualima" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">Instagram Angkatan</span>
+            <span class="contact-value">@ep.dualima</span>
+          </div>
+          <div class="contact-arrow" aria-hidden="true">→</div>
+        </a>
+
+        <a href="mailto:angkatan25epunisba@gmail.com" class="contact-card">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M2 7l10 7 10-7" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">Email Angkatan</span>
+            <span class="contact-value">angkatan25epunisba@gmail.com</span>
+          </div>
+          <div class="contact-arrow" aria-hidden="true">→</div>
+        </a>
+
+        <a href="https://instagram.com/fkamilarkara" target="_blank" rel="noopener noreferrer" class="contact-card developer">
+          <div class="contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="currentColor" stroke-width="1.5"/><path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">Developer Website</span>
+            <span class="contact-value">@fkamilarkara</span>
+          </div>
+          <div class="contact-arrow" aria-hidden="true">→</div>
+        </a>
+      </div>
+
+      <div class="contact-prodi fade-in">
+        <div class="prodi-logo" aria-hidden="true">EP</div>
+        <div class="prodi-detail">
+          <p class="prodi-name">Ekonomi Pembangunan</p>
+          <p class="prodi-faculty">Fakultas Ekonomi dan Bisnis</p>
+          <p class="prodi-uni">Universitas Islam Bandung</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer class="footer">
+    <div class="footer-line"></div>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span>ANGKATAN</span>
+        <em>25</em>
+      </div>
+      <p class="footer-copy">
+        © 2025 Angkatan 25 — Ekonomi Pembangunan, FEB UNISBA. All rights reserved.
+      </p>
+      <p class="footer-dev">
+        Website by&nbsp;
+        <a href="https://instagram.com/fkamilarkara" target="_blank" rel="noopener noreferrer">Fauzan Kamil</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
