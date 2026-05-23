@@ -459,7 +459,7 @@ const ALBUM_DATA = [
     badge:  "Album II",
     title:  "Anomali Angkatan 25",
     count:  "50 Foto",
-    music:  "assets/music/TheWinner.mp3",   // GANTI: musik album 2
+    music:  "assets/music/Kereta Kencan.mp3",   // GANTI: musik album 2
     photos: (function() {
       const raw = [
         { src: "assets/images/ak15.jpeg", caption: "Faris Sering Tidur",            type: "portrait"  },
@@ -522,7 +522,7 @@ const ALBUM_DATA = [
     badge:  "Album III",
     title:  "Prestasi",
     count:  "50 Foto",
-    music:  "assets/music/TheWinner.mp3",   // GANTI: musik album 3
+    music:  "assets/music/Prestasi1.mp3",   // GANTI: musik album 3
     photos: (function() {
       const raw = [
         { src: "assets/images/ak1.jpeg",  caption: "Foto PDH FEB — Bangga",        type: "portrait"  },
